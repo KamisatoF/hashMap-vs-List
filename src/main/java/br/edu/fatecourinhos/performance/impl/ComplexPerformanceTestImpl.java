@@ -4,14 +4,13 @@ import br.edu.fatecourinhos.commons.RunType;
 import br.edu.fatecourinhos.commons.SomeObject;
 import br.edu.fatecourinhos.commons.Utils;
 import br.edu.fatecourinhos.performance.PerformanceTest;
-
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import static br.edu.fatecourinhos.commons.Utils.getElapsedTimeMessage;
 import static br.edu.fatecourinhos.commons.Utils.getObjectFoundMessage;
 
 public class ComplexPerformanceTestImpl implements PerformanceTest {
-    private final long MAX_ITEMS = 2 * 1000000;
+    private final long MAX_ITEMS = 7 * 1000000;
     private final SomeObject VALUE_TO_FIND = new SomeObject(31, "Fabio Kamisato", Utils.nextString(20), Utils.nextString(20), Utils.nextString(20));
     private final boolean ADD_ITEM = true;
 

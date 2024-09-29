@@ -11,7 +11,7 @@ import static br.edu.fatecourinhos.commons.Utils.getObjectFoundMessage;
 public class SimplePerformanceTestImpl implements PerformanceTest {
     private final long VALUE_TO_FIND = 10L;
     private final boolean ADD_ITEM = true;
-    private final long MAX_ITEMS = 50 * 1000000;
+    private final long MAX_ITEMS = 40 * 1000000;
 
     @Override
     public void runPerformanceTest(RunType runType) {
