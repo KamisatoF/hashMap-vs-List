@@ -4,7 +4,6 @@ import br.edu.fatecourinhos.commons.RunType;
 import br.edu.fatecourinhos.performance.PerformanceTest;
 import br.edu.fatecourinhos.performance.impl.ComplexPerformanceTestImpl;
 import br.edu.fatecourinhos.performance.impl.SimplePerformanceTestImpl;
-
 import java.util.Arrays;
 
 public class Main {

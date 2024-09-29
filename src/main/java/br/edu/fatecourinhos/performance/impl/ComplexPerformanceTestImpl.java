@@ -17,14 +17,11 @@ public class ComplexPerformanceTestImpl implements PerformanceTest {
     @Override
     public void runPerformanceTest(RunType runType) {
         if (runType == null) return;
-        Set<SomeObject> someObjectSet = generateObjects();
-        if (ADD_ITEM) someObjectSet.add(VALUE_TO_FIND);
+        Map<Integer, SomeObject> hashMap = generateObjects();
+        if (ADD_ITEM) hashMap.put(VALUE_TO_FIND.hashCode(), VALUE_TO_FIND);
 
-        List<SomeObject> someObjectList = new ArrayList<>(someObjectSet);
+        List<SomeObject> someObjectList = new ArrayList<>(hashMap.values());
         Collections.shuffle(someObjectList);
-
-        Map<Integer, SomeObject> hashMap = new HashMap<>();
-        someObjectSet.forEach(item -> hashMap.put(item.hashCode(), item));
 
         System.out.println("List size: " + someObjectList.size());
         System.out.println("Hash size: " + hashMap.size());
@@ -39,22 +36,23 @@ public class ComplexPerformanceTestImpl implements PerformanceTest {
         }
     }
 
-    private Set<SomeObject> generateObjects() {
-        Set<SomeObject> list = new HashSet<>();
+    private Map<Integer, SomeObject> generateObjects() {
+        Map<Integer, SomeObject> map = new HashMap<>();
         for (int i = 0; i < MAX_ITEMS; i++) {
-            list.add(generateSomeObject());
+            var somoeObject = generateSomeObject();
+            map.put(somoeObject.hashCode(), somoeObject);
         }
 
-        return list;
+        return map;
     }
 
     private SomeObject generateSomeObject() {
         SomeObject someObject = new SomeObject();
         someObject.setFiled1(ThreadLocalRandom.current().nextInt());
-        someObject.setField2(Utils.nextString(20));
-        someObject.setField3(Utils.nextString(20));
-        someObject.setField4(Utils.nextString(20));
-        someObject.setField5(Utils.nextString(20));
+        someObject.setField2(Utils.nextString(10));
+        someObject.setField3(Utils.nextString(10));
+        someObject.setField4(Utils.nextString(10));
+        someObject.setField5(Utils.nextString(10));
 
         return someObject;
     }
@@ -73,7 +71,6 @@ public class ComplexPerformanceTestImpl implements PerformanceTest {
                 break;
             }
         }
-
         elapsedTime = System.nanoTime() - ini;
         System.out.println("List get: " + getElapsedTimeMessage(elapsedTime) + Objects.requireNonNull(someObject));
     }
