@@ -48,7 +48,7 @@ public class ComplexPerformanceTestImpl implements PerformanceTest {
 
     private SomeObject generateSomeObject() {
         SomeObject someObject = new SomeObject();
-        someObject.setFiled1(ThreadLocalRandom.current().nextInt());
+        someObject.setFieled1(ThreadLocalRandom.current().nextInt());
         someObject.setField2(Utils.nextString(10));
         someObject.setField3(Utils.nextString(10));
         someObject.setField4(Utils.nextString(10));
